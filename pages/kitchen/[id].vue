@@ -27,9 +27,10 @@ const product = products.value.find(p => p.id === productId) || null;
             <li v-for="(feature, index) in product.snippet2" :key="index">{{ feature }}</li>
           </ul>
         <div>
-          <button class="mt-10 bg-[#D71F29] text-white px-4 py-2 rounded hover:bg-[#b71c24] transition duration-200">
+          <Modal/>
+          <!-- <button class="mt-10 bg-[#D71F29] text-white px-4 py-2 rounded hover:bg-[#b71c24] transition duration-200">
             Make A Reservation
-          </button>
+          </button> -->
         </div>
       </div>
     </div>
@@ -43,6 +44,7 @@ const product = products.value.find(p => p.id === productId) || null;
   </div>
 
   <div v-else>
+    
     <p class="text-red-500 text-lg text-center mt-10">Product not found!</p>
   </div>
 </template>
