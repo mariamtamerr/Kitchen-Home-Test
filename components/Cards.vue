@@ -31,10 +31,9 @@ const props = defineProps(["card"]);
             
       
         <NuxtLink
-          class="group  hover:bg-gray-100 focus:outline-none focus:bg-gray-100 rounded-xl p-5 transition d:hover:bg-white/10 d:focus:bg-white/10"
-          :to='`/kitchen/${singleCard.id}`'
-          onclick="event.preventDefault();"
-        >
+        class="group hover:bg-gray-100 focus:outline-none focus:bg-gray-100 rounded-xl p-5 transition d:hover:bg-white/10 d:focus:bg-white/10"
+        :to="`/kitchen/${singleCard.id}`"
+          >
           <div  class="aspect-w-16 aspect-h-9 h-80">
             <img
             class="w-full h-full mx-auto object-cover rounded-xl"
