@@ -2,7 +2,7 @@
     <div>
       <Navbar />
       <slot />
-      <AppFooter />
+      <!-- <AppFooter /> -->
     </div>
   </template>
   
