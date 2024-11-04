@@ -108,3 +108,6 @@ export const useProducts = () => useState('products', () => [
     image: 'contemporary_kitchen_3.webp',
   },
 ]);
+
+
+export const useReservations = () => useState('reservations', () => [] );

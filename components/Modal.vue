@@ -57,16 +57,16 @@
           <div class="p-4 overflow-y-auto text-center">
             <!-- <div class="left"> -->
             <p class="mt-1 text-gray-600 d:text-neutral-400">
-              Once you choose a date and confirm your reservation, customer
+              Once you choose a date and write your info, customer
               service will contact you shortedly.
             </p>
             <!-- </div> -->
             <div class="right mt-5">
-              <Calender />
+              <Calender v-model="reservationDate" />
             </div>
 
             <div class="info">
-              <Info />
+                <Info @updateName="(value) => name = value" @updateMobile="(value) => mobile = value" />
             </div>
           </div>
           <div
@@ -80,10 +80,11 @@
               Close
             </button>
             <button
+            @click="reserveProduct"
               type="button"
               class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-slate-800 text-white hover:bg-slate-500"
             >
-              Save changes
+              Reserve
             </button>
           </div>
         </div>
@@ -94,6 +95,8 @@
 
 <script setup>
 import { ref } from "vue";
+import { useRoute } from 'vue-router';
+import { useProducts, useReservations } from '@/composables/useProducts';
 
 // State variable to track if the modal is open
 const isModalOpen = ref(false);
@@ -106,5 +109,37 @@ const openModal = () => {
 // Function to close the modal
 const closeModal = () => {
   isModalOpen.value = false;
+};
+
+
+// date
+const reservationDate = ref(new Date())
+const reservations = useReservations(); 
+const route = useRoute();
+const products = useProducts(); // Access global product state
+const productId = parseInt(route.params.id);
+const product = products.value.find(p => p.id === productId) || null;
+
+const name = ref('');
+const mobile = ref('');
+
+const reserveProduct = () => {
+  if (reservationDate.value && name.value && mobile.value) {
+    reservations.value.push({
+      product,
+      date: reservationDate.value.toLocaleDateString('en-US', {
+        weekday: 'short',
+        year: 'numeric',
+        month: 'short',
+        day: '2-digit',
+      }),
+      name: name.value,
+      mobile: mobile.value,
+    });
+    closeModal();
+    alert('Reservation confirmed!');
+  } else {
+    alert('Please fill in all the fields.');
+  }
 };
 </script>

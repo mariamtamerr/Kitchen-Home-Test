@@ -2,9 +2,14 @@
 import { Disclosure, DisclosureButton } from '@headlessui/vue'
 import { Bars3Icon, XMarkIcon } from '@heroicons/vue/24/outline'
 import { ChevronDownIcon } from '@heroicons/vue/20/solid'
-import { computed } from 'vue'
+import { computed, ref } from 'vue'
 import { Menu, MenuButton, MenuItems, MenuItem } from '@headlessui/vue'
+import { useReservations } from '~/composables/useProducts'
 
+const reservations = useReservations()
+
+// compute the count
+const reservationCount = computed(()=> reservations.value.length)
 
 const navigation = [
   { name: 'Our Kitchens',  },
@@ -48,7 +53,7 @@ const navigation = [
                 to='/reservations'
                 class="hover:cursor-pointer rounded-md px-3 py-2 text-sm font-medium text-slate-800 hover:bg-gray-700 hover:text-white" 
               >
-               Reservations
+               Reservations ({{ reservationCount }})
               </NuxtLink>
 
             </div>
