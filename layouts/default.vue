@@ -1,7 +1,8 @@
 <template>
     <div>
       <Navbar />
-      <slot />
+      <NuxtPage />
+      <!-- <slot /> -->
       <!-- <AppFooter /> -->
     </div>
   </template>

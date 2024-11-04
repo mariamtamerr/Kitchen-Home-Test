@@ -7,6 +7,7 @@ const largeCardInfo = ref(largeCardSections);
 
 <template>
   <div>
+    <!-- <Navbar/> -->
     <Hero />
     <Cards v-for="card in largeCardInfo" :key="card.id" :card="card" />
   </div>
