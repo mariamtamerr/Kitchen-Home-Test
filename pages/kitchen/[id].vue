@@ -11,8 +11,8 @@ const product = products.value.find(p => p.id === productId) || null;
 </script>
 
 <template>
-  <div v-if="product">
-    <div class="sm:flex px-10 sm:px-4   gap-10 max-w-[85rem] bg-white shadow-md pb-10 rounded-lg overflow-hidden mx-auto mt-10 mb-16">
+  <div v-if="product" class="max-w-[85rem] lg:max-w-auto mx-auto">
+    <div class="sm:flex px-10 sm:px-4   gap-10  bg-white shadow-md pb-10 rounded-lg overflow-hidden mx-auto mt-10 mb-16">
       <div class="left sm:w-1/2 mx-auto">
         <img :src="`/assets/images/${product.image}`" :alt="product.title" class="w-full h-full object-cover" />
       </div>
@@ -34,10 +34,12 @@ const product = products.value.find(p => p.id === productId) || null;
       </div>
     </div>
 
-    <div class="max-w-[85rem] mx-auto px-4 py-6">
-      
+  <!-- start reviews -->
+    <div class=" mx-auto px-4 py-6">
+      <h2 class="font-bold mb-10 text-2xl text-slate-800">Customer Reviews</h2>
+      <Reviews/>
     </div>
-
+  <!-- end reviews -->
   </div>
 
   <div v-else>

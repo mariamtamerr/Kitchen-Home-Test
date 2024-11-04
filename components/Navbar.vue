@@ -4,34 +4,12 @@ import { Bars3Icon, XMarkIcon } from '@heroicons/vue/24/outline'
 import { ChevronDownIcon } from '@heroicons/vue/20/solid'
 import { computed } from 'vue'
 import { Menu, MenuButton, MenuItems, MenuItem } from '@headlessui/vue'
-import { useStore } from 'vuex'
-import {useI18n} from 'vue-i18n'
 
-// const store = useStore()
 
-// const setEnglish = () => {
-//   store.dispatch('changeLocale', 'en');
-// };
-
-// const setArabic = () => {
-//   store.dispatch('changeLocale', 'ar');
-// };
-
-// const {locale} = useI18n()
-// const setEnglish = () => {
-//   locale.value = 'en';
-// };
-
-// const setArabic = () => {
-//   locale.value = 'ar';
-// };
-
-// const currentLocale = computed(() => locale.value);
-
-const navigation = [
-  { name: 'Products', href: '#', current: true },
-  { name: 'My Items', href: '#', current: false },
-]
+// const navigation = [
+//   { name: 'Our Kitchens', to: '/', current: route.path === '/kitchens' },
+//   { name: 'Reservations', to: '/reservations', current: route.path=== '/reservations' },
+// ]
 </script>
 
 <template>
@@ -46,28 +24,38 @@ const navigation = [
         </div>
         <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
           <div class="flex flex-shrink-0 items-center">
-            <h1 class="text-xl font-bold text-slate-800">Kitchen Home</h1>
+            <NuxtLink to="/">
+              <h1 class="text-xl font-bold text-slate-800">Kitchen Home</h1>
+            </NuxtLink>
           </div>
         </div>
         <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
           <div class="hidden sm:ml-6 sm:block">
             <div class="flex space-x-4">
+             
               <NuxtLink
-                v-for="item in navigation"
-                :key="item.name"
-                :to="item.href"
-                :class="[item.current ? 'bg-gray- text-slate-800' : 'text-slate-800 hover:bg-gray-700 hover:text-slate-800', 'rounded-md px-3 py-2 text-sm font-medium']"
-                :aria-current="item.current ? 'page' : undefined"
+                to='/'
+                class="rounded-md px-3 py-2 text-sm font-medium text-slate-800 cursor-pointer hover:bg-gray-700  hover:text-white"
               >
-                {{ item.name }}
+                Our Kitchens
               </NuxtLink>
+
+
+              <NuxtLink
+                to='/reservations'
+                class="hover:cursor-pointer rounded-md px-3 py-2 text-sm font-medium text-slate-800 hover:bg-gray-700 hover:text-white" 
+              >
+               Reservations
+              </NuxtLink>
+
             </div>
           </div>
 
           <!-- Language dropdown -->
           <Menu as="div" class="relative inline-block text-left">
             <MenuButton class="inline-flex justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
-              Lang {{ currentLocale }}
+              Lang 
+              <!-- {{ currentLocale }} -->
               <ChevronDownIcon class="-mr-1 h-5 w-5 text-gray-400" aria-hidden="true" />
             </MenuButton>
 
