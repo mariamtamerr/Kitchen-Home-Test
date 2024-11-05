@@ -1,7 +1,7 @@
 <script setup>
 const { data } = await useFetch("https://randomuser.me/api/?results=5");
 
-console.log("data is ", data.value.results);
+// console.log("data is ", data.value.results);
 
 const reviewers = ref(data.value.results);
 </script>
